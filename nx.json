@@ -25,6 +25,16 @@
     "shell-e2e": {
       "tags": [],
       "implicitDependencies": ["shell"]
+    },
+    "child-app": {
+      "tags": []
+    },
+    "child-app-e2e": {
+      "tags": [],
+      "implicitDependencies": ["child-app"]
+    },
+    "regular-lib": {
+      "tags": []
     }
   }
 }
