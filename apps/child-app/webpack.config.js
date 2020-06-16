@@ -1,8 +1,5 @@
-// const ModifyChunkIdPlugin = require('modify-chunk-id-webpack-plugin');
-
 module.exports = (config) => {
-  // console.log(config)
-  config.externals = {
+  config.externals = { // we will load common deps from window exposed by shell app
     rxjs: 'rxjs',
     '@angular/core': 'ng.core',
     '@angular/common': 'ng.common',
@@ -16,16 +13,13 @@ module.exports = (config) => {
     '@angular/forms': 'ng.forms',
   };
 
-  // delete config.entry.polyfills;
-  // delete config.entry.styles;
-  // config.optimization.chunkIds = false;
-  // delete config.optimization.splitChunks;
-  // config.plugins.push(
-  //   new ModifyChunkIdPlugin({ random: true }),
-  //   // other plugins
-  // );
+  delete config.entry.polyfills; // we have it in shell app
+  delete config.entry.styles;  // global styles will be available only in shell app
+  config.optimization.runtimeChunk = false; // each child app will contain webpack runtime in its chunk. We want to avoid overhead on loading multiple scripts for caching cost
+  config.output.jsonpFunction = 'childModuleWebpackJsonP'; // avoid collisions with other apps
+  config.output.filename = '__child-app__[name].js'; // we want to differentiate chunks on shell proxy dev server. this prefix will allow that
 
-  config.optimization.runtimeChunk = false;
-  config.output.jsonpFunction = 'childModuleWebpackJsonP';
+  delete config.optimization.splitChunks.cacheGroups.vendor // we want to avoid overhead on loading multiple scripts for caching cost
   return config;
 };
+

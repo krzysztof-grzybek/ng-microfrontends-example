@@ -3,9 +3,9 @@
   "version": "0.0.0",
   "license": "MIT",
   "scripts": {
-    "build-all": "ng build shell && npm run go",
-    "go": "ng build child-app && npm run copy-child-apps",
-    "copy-child-apps": "cp ./dist/apps/child-app/main-es2015.js ./dist/apps/shell/child-app_main-es2015.js",
+    "build-all": "ng build shell && ng build child-app && npm run deploy-child-apps",
+    "serve-prod": "ng build shell && ng build child-app && npm run deploy-child-apps",
+    "deploy-child-apps": "cp ./dist/apps/child-app/main-es2015.js ./dist/apps/shell/child-app_main-es2015.js",
     "ng": "nx",
     "postinstall": "node ./decorate-angular-cli.js && ngcc --properties es2015 browser module main --first-only --create-ivy-entry-points",
     "nx": "nx",
