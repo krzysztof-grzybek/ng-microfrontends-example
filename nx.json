@@ -35,6 +35,9 @@
     },
     "regular-lib": {
       "tags": []
+    },
+    "my-feature-module": {
+      "tags": []
     }
   }
 }

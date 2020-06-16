@@ -16,7 +16,8 @@
     "skipDefaultLibCheck": true,
     "baseUrl": ".",
     "paths": {
-      "@my-attempt/regular-lib": ["libs/regular-lib/src/index.ts"]
+      "@my-attempt/regular-lib": ["libs/regular-lib/src/index.ts"],
+      "@my-attempt/my-feature-module": ["libs/my-feature-module/src/index.ts"]
     }
   },
   "exclude": ["node_modules", "tmp"]

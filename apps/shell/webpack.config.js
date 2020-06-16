@@ -1,7 +1,5 @@
-module.exports = (config) => {
-  config.devServer.proxy = {
-    '/__child-app__': 'http://localhost:3000'
-  };
+const createShellWebpackConfig = require('../../tools/createShellWebpackConfig');
 
-  return config;
-}
+module.exports = (config) => createShellWebpackConfig({
+  '/__child-app__': 'http://localhost:3000'
+}, config);

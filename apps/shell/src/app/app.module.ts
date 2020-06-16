@@ -3,7 +3,7 @@ import { NgModule } from '@angular/core';
 import { RouterModule } from '@angular/router';
 
 import { AppComponent } from './app.component';
-import { loadApp } from './loadApp';
+import { loadApp } from '../shell-utils/loadApp';
 import { ShellComponent } from './components/shell.component';
 
 

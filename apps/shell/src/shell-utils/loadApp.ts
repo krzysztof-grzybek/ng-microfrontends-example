@@ -1,11 +1,6 @@
 const appsMap = {};
 const appsNamespace = window;
 
-// TODO: configure hosts by env
-const appsHostsMap = {
-  'child-app': 'http://localhost:3000',
-};
-
 export function loadApp(appName: string): Promise<any> {
   return new Promise<any>((resolve, reject) => {
 
@@ -15,14 +10,13 @@ export function loadApp(appName: string): Promise<any> {
     }
     const script = document.createElement('script');
 
-    const host = appsHostsMap[appName];
-    script.src = `${host}/__${appName}__main.js`; // + umdFileName;
+    script.src = `/__${appName}__main.js`;
 
     script.onerror = reject;
 
     script.onload = () => {
       appsMap[appName] = true;
-      resolve(appsNamespace[appName]); // window is the global namespace
+      resolve(appsNamespace[appName]);
     }
 
     document.body.append(script);
